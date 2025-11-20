@@ -1,14 +1,19 @@
 :root {
-  --color-primary: #006cbb;
+  --color-primary: #363636;
 
-  --color-white: #fff;
-  --color-gray: #dfdfdf;
-  --color-black: #000;
+  --color-white: #ffffff;
+  --color-gray-light: #eeeeee;
+  --color-gray: #cccccc;
+  --color-gray-dark: #777777;
+  --color-gray-darker: #4b4b4b;
+  --color-gray-darkest: #303030;
+  --color-black: #000000;
 
+ 
   --color-success: #01bd78;
+
   --color-error: #d40019;
 }
-
 * {
   box-sizing: border-box;
 
