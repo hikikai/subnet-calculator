@@ -1,3 +1,3 @@
-# subnet-calc
+# subnet-calculator
 
 Frontend: Typescript, Vite, Vue
