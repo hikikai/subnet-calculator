@@ -3,12 +3,12 @@
   <h1>Калькулятор подсетей</h1>
 </header>  
 <div>
-<UiCalculator></UiCalculator>
+<SubnetCalculator></SubnetCalculator>
 </div>
 </template>
 
 <script setup lang="ts">
-import UiCalculator from '../components/UiCalculator.vue';
+import SubnetCalculator from '../components/SubnetCalculator.vue';
 </script>
 
 <style module lang="scss">

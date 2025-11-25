@@ -96,7 +96,7 @@ function getAddressesCount(mask: string): number {
   width: 65%;
   padding-bottom: 30%;
   flex-wrap: wrap;
-  padding: 40px 0; // добавляем вертикальные отступы вместо padding-bottom
+  padding: 40px 0; 
 }
 
 .data{
