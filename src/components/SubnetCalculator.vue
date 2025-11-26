@@ -17,13 +17,18 @@
   </div>
   
   <UiButton type="submit" layout="primary" :disabled="!isIpValid(ip)">Рассчитать</UiButton>
-  
-  <div :class="$style.result" v-if="isShowResult && isIpValid(ip)">
+ 
+  <Transition name="slide-up">
+  <div 
+    :class="$style.result" 
+    v-if="isShowResult && isIpValid(ip)"
+  >
     <div>IP: {{ ip }}</div>
     <div>Маска подсети: {{ mask }}</div>
     <div>Адрес сети: {{ getNetworkAdress(ip, mask) }}</div>
     <div>Количество адресов: {{ getAddressesCount(mask) }}</div> 
   </div>
+</Transition>
 </form>
 </template>
 
@@ -32,17 +37,22 @@ import { UiButton } from 'subnet-calculator-ui';
 import { UiField } from 'subnet-calculator-ui';
 import { UiSelect } from 'subnet-calculator-ui';
 import { UiInput } from 'subnet-calculator-ui';
-import { ref } from 'vue';
+import { ref, Transition } from 'vue';
 import { maskList } from './arrays';
+
+
 
 const ip= ref('')
 const mask = ref(maskList[0])     
 
 const isShowResult = ref(false) 
 
+
 function showResult(){
   isShowResult.value = true;
 }
+
+
 
 function isIpValid(ip: string): boolean {
   return (
@@ -115,5 +125,30 @@ function getAddressesCount(mask: string): number {
   max-width: 400px;
   text-align: center;
 }
+</style>
+
+
+<!--для анимаций используется отдельная секция, т.к. с модульностью это не работает-->
+<style lang="scss">
+
+.slide-up-enter-active,
+.slide-up-leave-active {
+  transition: all 300ms;
+}
+
+.slide-up-enter-from,
+.slide-up-leave-to {
+  opacity: 0;
+  transform: translateY(200px);
+}
+
+// enter-from - начальная точка (видимость: 0, смещено на 200px ВНИЗ!!!)
+// enter-active - анимация  (плавное появление в течении 300мс)
+// enter-to - конечная точка (тут не используется, Вью всё понял)
+
+// leave-to - начальная точка (такие же хар-ки как у enter-from)
+// leave-active - анимация (всё такое же как с enter)
+// leave-to конечная точка (всё работает без неё как с enter-to)
+
 
 </style>
