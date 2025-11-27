@@ -1,34 +1,27 @@
 <template>
-
-
-
 <form :class="$style.main" @submit.prevent="showResult">
-  
   <div :class="$style.data">
     <div>
-    <UiField :label="'IP-адрес'"></UiField>
-    <UiInput v-model="ip" :placeholder="'Введите IP (0.0.0.0)'"></UiInput>
+      <UiField :label="'IP-адрес'"></UiField>
+      <UiInput v-model="ip" :placeholder="'Введите IP (0.0.0.0)'"></UiInput>
     </div>
     
     <div>
-    <UiField :label="'Маска подсети'"></UiField>
-    <UiSelect v-model="mask" :disabled="!isIpValid(ip)" :options="maskList" ></UiSelect>  
+      <UiField :label="'Маска подсети'"></UiField>
+      <UiSelect v-model="mask" :disabled="!isIpValid(ip)" :options="maskList" ></UiSelect>  
     </div>
   </div>
   
   <UiButton type="submit" layout="primary" :disabled="!isIpValid(ip)">Рассчитать</UiButton>
  
   <Transition name="slide-up">
-  <div 
-    :class="$style.result" 
-    v-if="isShowResult && isIpValid(ip)"
-  >
-    <div>IP: {{ ip }}</div>
-    <div>Маска подсети: {{ mask }}</div>
-    <div>Адрес сети: {{ getNetworkAdress(ip, mask) }}</div>
-    <div>Количество адресов: {{ getAddressesCount(mask) }}</div> 
-  </div>
-</Transition>
+    <div :class="$style.result" v-if="isShowResult && isIpValid(ip)">
+      <div>IP: {{ ip }}</div>
+      <div>Маска подсети: {{ mask }}</div>
+      <div>Адрес сети: {{ getNetworkAdress(ip, mask) }}</div>
+      <div>Количество адресов: {{ getAddressesCount(mask) }}</div> 
+    </div>
+  </Transition>
 </form>
 </template>
 
@@ -40,19 +33,15 @@ import { UiInput } from 'subnet-calculator-ui';
 import { ref } from 'vue';
 import { maskList } from './arrays';
 
-
-
 const ip= ref('')
 const mask = ref(maskList[0])     
 
-const isShowResult = ref(false) 
 
+const isShowResult = ref(false) 
 
 function showResult(){
   isShowResult.value = true;
 }
-
-
 
 function isIpValid(ip: string): boolean {
   return (
@@ -90,17 +79,12 @@ function getAddressesCount(mask: string): number {
 
 <style module lang="scss">
 
-*{
-// border: 2px solid black;
-}
-
-
 .main{
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 20px;
-   min-height: 94.5vh;
+  min-height: 94.5vh;
   background-color: var(--color-gray-light);
   margin: auto;
   width: 65%;
@@ -127,7 +111,6 @@ function getAddressesCount(mask: string): number {
 }
 </style>
 
-
 <!--для анимаций используется отдельная секция, т.к. с модульностью это не работает-->
 <style lang="scss">
 
@@ -145,10 +128,7 @@ function getAddressesCount(mask: string): number {
 // enter-from - начальная точка (видимость: 0, смещено на 200px ВНИЗ!!!)
 // enter-active - анимация  (плавное появление в течении 300мс)
 // enter-to - конечная точка (тут не используется, Вью всё понял)
-
 // leave-to - начальная точка (такие же хар-ки как у enter-from)
 // leave-active - анимация (всё такое же как с enter)
 // leave-to конечная точка (всё работает без неё как с enter-to)
-
-
 </style>
