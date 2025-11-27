@@ -12,7 +12,7 @@
     
     <div>
     <UiField :label="'Маска подсети'"></UiField>
-    <UiSelect v-model="mask" :options="maskList"></UiSelect>  
+    <UiSelect v-model="mask" :disabled="!isIpValid(ip)" :options="maskList" ></UiSelect>  
     </div>
   </div>
   
