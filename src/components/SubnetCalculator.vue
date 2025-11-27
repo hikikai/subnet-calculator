@@ -37,7 +37,7 @@ import { UiButton } from 'subnet-calculator-ui';
 import { UiField } from 'subnet-calculator-ui';
 import { UiSelect } from 'subnet-calculator-ui';
 import { UiInput } from 'subnet-calculator-ui';
-import { ref, Transition } from 'vue';
+import { ref } from 'vue';
 import { maskList } from './arrays';
 
 
